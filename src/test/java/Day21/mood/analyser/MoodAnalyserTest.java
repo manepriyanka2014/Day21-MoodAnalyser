@@ -7,15 +7,11 @@ import static org.junit.Assert.*;
 
 public class MoodAnalyserTest {
     MoodAnalyser moodAnalyser = new MoodAnalyser();
-    @Test
-    public void givenMessage_IsProper_ShouldReturnSad() {
-        String actualResult = moodAnalyser.analyseMood("I am Sad in Mood");
-        Assert.assertEquals("SAD", actualResult);
-    }
 
     @Test
-    public void givenMessage_IsProper_AndContain_Any_ShouldReturnHappy() {
-        String actualResult = moodAnalyser.analyseMood("I am in Any Mood");
-        Assert.assertEquals("HAPPY", actualResult);
+    public void givenMessage_IsProper_ShouldReturnSad() {
+        moodAnalyser.setMessage("I am in Sad Mood");
+        String actualResult = moodAnalyser.analyseMood();
+        Assert.assertEquals("SAD", actualResult);
     }
 }
