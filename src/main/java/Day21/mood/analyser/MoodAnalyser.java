@@ -1,15 +1,36 @@
 package Day21.mood.analyser;
 
 public class MoodAnalyser {
+    private String message;
 
-	public String analyseMood(String message) {
+    public MoodAnalyser(String message) throws MoodAnalyserException {
+        this.message = message;
+    }
 
-		if (message.toLowerCase().contains("sad")) {
-			return "SAD";
-		} else if (message.toLowerCase().contains("any")) {
-			return "HAPPY";
-		} else {
-			return null;
-		}
-	}
+    public MoodAnalyser() {
+
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String analyseMood() throws MoodAnalyserException {
+        try {
+            if (message == "")
+                throw new MoodAnalyserException("Entered Invalid Mood",
+                        MoodAnalyserException.ExceptionType.ENTERED_EMPTY);
+            if (message.toLowerCase().contains("sad")) {
+                return "SAD";
+            } else
+                return "HAPPY";
+        } catch (NullPointerException e) {
+            throw new MoodAnalyserException("Entered Invalid Mood",
+                    MoodAnalyserException.ExceptionType.ENTERED_NULL);
+        }
+    }
 }
