@@ -1,22 +1,33 @@
 package Day21.mood.analyser;
 
 public class MoodAnalyser {
+    private String message;
 
-    public String analyseMood(String message) {
-        if (message.toLowerCase().contains("happy")) {
-            return "Happy";
-        } else if (message.toLowerCase().contains("sad")) {
-            return "Sad";
-        } else {
-            return null;
-        }
+    public MoodAnalyser(String message) {
+        this.message = message;
     }
 
-    public static void main(String[] args) {
-        MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood = moodAnalyser.analyseMood("I am Happy");
-        System.out.println(mood);
-        mood = moodAnalyser.analyseMood("I am Sad");
-        System.out.println(mood);
+    public MoodAnalyser() {
+
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String analyseMood() {
+        try {
+            if (message.toLowerCase().contains("sad")) {
+                return "SAD";
+            } else {
+                return "HAPPY";
+            }
+        } catch (NullPointerException e) {
+            return "Exception Handled";
+        }
     }
 }
